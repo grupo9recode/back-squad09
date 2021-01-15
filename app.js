@@ -17,7 +17,7 @@ app.get('/produtos',cors(), (req, res, next) => {
         password: '',
         database: 'maosdadas'
     });
-    connection.query("select * from produtos", (error, result) => {
+    connection.query("select * from cadastrarprodutos", (error, result) => {
         
         // console.log(res.json({ dados: result }))
         res.json(  result)
