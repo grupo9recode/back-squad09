@@ -17,7 +17,7 @@ app.get('/produtos',cors(), (req, res, next) => {
         password: '',
         database: 'maosdadas'
     });
-    connection.query("select * from cadastrarprodutos", (error, result) => {
+    connection.query("select username, produto, categoria, valor, descricao, nome, cpf, celular, email from cadastrarprodutos inner join usuario on id_usuario = username;", (error, result) => {
         
         // console.log(res.json({ dados: result }))
         res.json(  result)
@@ -171,6 +171,6 @@ app.post('/contato', (req, res) => {
 
 });
 
-app.listen(3000, ()=>{
+app.listen(3005, ()=>{
     console.log('Servidor ativo');
 })
