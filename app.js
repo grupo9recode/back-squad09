@@ -106,6 +106,8 @@ app.post('/cadastrarservicos', (req, res) => {
 
   
     dados.push({
+        
+        username: req.body.username,
         servico: req.body.servico, 
         categoria: req.body.categoria,
         valor: req.body.valor,
