@@ -41,6 +41,21 @@ app.get('/servicos',cors(), (req, res, next) => {
     })
     
 })
+app.get('/login',cors(), (req, res, next) => {
+    const mysql = require('mysql');
+    const connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: '',
+        database: 'maosdadas'
+    });
+    connection.query("select * from usuario;", (error, result) => {
+        
+        // console.log(res.json({ dados: result }))
+        res.json(  result)
+    })
+    
+})
 
 
 
@@ -99,7 +114,7 @@ app.post('/cadastrarservicos', (req, res) => {
     })
     // colocando os dados recebidos dentro da nossa tabela
     
-    connection.query("INSERT INTO cadastrarservicos SET?", dados, () => {
+    connection.query("INSERT INTO cadastrarservico SET?", dados, () => {
         dados = []
         return res.json({ mensagem: "Dados enviados com sucesso" })
         
