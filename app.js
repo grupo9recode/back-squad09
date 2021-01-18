@@ -91,6 +91,8 @@ app.post('/cadastrarservicos', (req, res) => {
 
   
     dados.push({
+        
+        username: req.body.username,
         servico: req.body.servico, 
         categoria: req.body.categoria,
         valor: req.body.valor,
@@ -99,7 +101,7 @@ app.post('/cadastrarservicos', (req, res) => {
     })
     // colocando os dados recebidos dentro da nossa tabela
     
-    connection.query("INSERT INTO cadastrarservicos SET?", dados, () => {
+    connection.query("INSERT INTO cadastrarservico SET?", dados, () => {
         dados = []
         return res.json({ mensagem: "Dados enviados com sucesso" })
         
