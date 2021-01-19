@@ -34,7 +34,7 @@ app.get('/servicos',cors(), (req, res, next) => {
         password: '',
         database: 'maosdadas'
     });
-    connection.query("select * from servicos", (error, result) => {
+    connection.query("select username, nome, servico, categoria, valor, descricao, email, celular from cadastrarservico inner join usuario on id_usuario = username;", (error, result) => {
         
         // console.log(res.json({ dados: result }))
         res.json(  result)
@@ -139,18 +139,17 @@ app.post('/cadastrese', (req, res) => {
 
   
     dados.push({
-        username: req.body.username, 
+
+        id_usuario: req.body.id_usuario, 
         nome: req.body.nome,
         cpf: req.body.cpf,
         celular: req.body.celular,
         email: req.body.email,
-        senha: req.body.senha,
-        confirmaemail: req.body.confirmaemail
-        
+        senha: req.body.senha 
     })
     // colocando os dados recebidos dentro da nossa tabela
     
-    connection.query("INSERT INTO cadastrese SET?", dados, () => {
+    connection.query("INSERT INTO usuario SET?", dados, () => {
         dados = []
         return res.json({ mensagem: "Dados enviados com sucesso" })
         
@@ -175,8 +174,7 @@ app.post('/contato', (req, res) => {
     dados.push({ 
         nome: req.body.nome,
         email: req.body.email,
-        mensagem: req.body.mensagem
-        
+        mensagem: req.body.mensagem    
     })
     // colocando os dados recebidos dentro da nossa tabela
     
