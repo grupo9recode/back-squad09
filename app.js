@@ -17,7 +17,7 @@ app.get('/produtos',cors(), (req, res, next) => {
         password: '',
         database: 'maosdadas'
     });
-    connection.query("select username, produto, categoria, valor, descricao, nome, cpf, celular, email from cadastrarprodutos inner join usuario on id_usuario = username;", (error, result) => {
+    connection.query("select username, produto, categoria, valor, descricao, nome, cpf, celular, email, imagem from cadastrarprodutos inner join usuario on id_usuario = username;", (error, result) => {
         
         // console.log(res.json({ dados: result }))
         res.json(  result)
@@ -34,7 +34,7 @@ app.get('/servicos',cors(), (req, res, next) => {
         password: '',
         database: 'maosdadas'
     });
-    connection.query("select username, nome, servico, categoria, valor, descricao, email, celular from cadastrarservico inner join usuario on id_usuario = username;", (error, result) => {
+    connection.query("select username, nome, servico, categoria, valor, descricao, email, celular, imagem from cadastrarservico inner join usuario on id_usuario = username;", (error, result) => {
         
         // console.log(res.json({ dados: result }))
         res.json(  result)
